@@ -1,1 +1,1 @@
-# sonarcloud-analysis
+# sonarcloud-analysis"An lisis manual activado" 
