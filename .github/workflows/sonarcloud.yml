@@ -28,8 +28,7 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          organization: agm54
-          projectKey: AGM54_sonarcloud-analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: AGM54_sonarcloud-analysis
+          SONAR_ORGANIZATION: agm54
