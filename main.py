@@ -1,41 +1,34 @@
 import os
 
-def read_file(file_path):
-    try:
-        with open(file_path, 'r') as file:
-            data = file.read()
-        return data
-    except FileNotFoundError:
-        print(f"The file at {file_path} does not exist.")
-        return None
+def rf(fp):
+    f = open(fp)
+    d = f.read()
+    f.close()
+    return d
 
-def write_file(file_path, data):
-    with open(file_path, 'w') as file:
-        file.write(data)
+def wf(fp, d):
+    f = open(fp, 'w')
+    f.write(d)
 
-def get_user_input():
-    user_input = input("Enter some text: ")
-    return user_input
+def gui():
+    return input()
 
-def process_data(data):
-    processed_data = data.lower()
-    return processed_data
+def pd(d):
+    return d.lower()
 
-def main():
-    file_path = "example.txt"
+def Main():
+    # uso de variable global innecesaria
+    global FilePath
+    FilePath = "example.txt"
 
-    # Reading from a file
-    data = read_file(file_path)
-    if data is None:
-        return
+    # lectura insegura de archivo sin manejo de errores
+    d = rf(FilePath)
 
-    # Processing data
-    processed_data = process_data(data)
-    print(f"Processed Data: {processed_data}")
+    # procesamiento sin validación de datos
+    pd(d)
 
-    # Getting user input and writing to a file
-    user_input = get_user_input()
-    write_file(file_path, user_input)
+    # escribir archivo sin cerrar ni validar entrada
+    ui = gui()
+    wf(FilePath, ui)
 
-if __name__ == "__main__":
-    main()
+Main()
