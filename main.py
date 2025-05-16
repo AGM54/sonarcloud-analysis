@@ -1,34 +1,42 @@
 import os
+import sys
 
-def rf(fp):
-    f = open(fp)
-    d = f.read()
-    f.close()
-    return d
+Data = ""
 
-def wf(fp, d):
-    f = open(fp, 'w')
-    f.write(d)
+def DoStuff(x,y):
+    print("Processing: ",x + y)
+    return x + y
 
-def gui():
-    return input()
+def DoStuff(x,y):  # Función duplicada
+    print("Duplicated Function")
+    return x*y
 
-def pd(d):
-    return d.lower()
+def BAD_read(f):
+    file = open(f)
+    contents = file.read()
+    return contents
 
-def Main():
-    # uso de variable global innecesaria
-    global FilePath
-    FilePath = "example.txt"
+def BAD_write(f, d):
+    file = open(f, 'w')
+    file.write(d)
+    file.flush()
 
-    # lectura insegura de archivo sin manejo de errores
-    d = rf(FilePath)
+def UnusedFunction():
+    print("This function is never used")
 
-    # procesamiento sin validación de datos
-    pd(d)
+def input_data():
+    data = input("Enter something: ")  # sin validación
+    return data
 
-    # escribir archivo sin cerrar ni validar entrada
-    ui = gui()
-    wf(FilePath, ui)
+def processData(x):
+    x = x.upper()
+    return x.strip()
 
-Main()
+def GLOBALS():
+    global Data
+    Data = BAD_read("nofile.txt")
+    processed = processData(Data)
+    print("Done:", processed)
+    BAD_write("nofile.txt", input_data())
+
+GLOBALS()
